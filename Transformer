@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трансформационный тренажёр "Ответ"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-gap: 10px;
+            width: 80%;
+            margin: 20px auto;
+        }
+        .cell {
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        #diceResult {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+        .roll-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Трансформационный тренажёр "Ответ"</h1>
+
+    <!-- Игровое поле -->
+    <div class="game-board" id="gameBoard">
+        <!-- Здесь будут клетки -->
+    </div>
+
+    <!-- Бросок кубика -->
+    <div id="diceResult">Бросьте кубик</div>
+    <button class="roll-button" id="rollButton">Бросить кубик</button>
+
+    <script>
+        // Функция для генерации игрового поля
+        function createGameBoard() {
+            const gameBoard = document.getElementById('gameBoard');
+            for (let i = 1; i <= 36; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.textContent = 'Клетка ' + i;
+                gameBoard.appendChild(cell);
+            }
+        }
+
+        // Функция для броска кубика
+        function rollDice() {
+            const result = Math.floor(Math.random() * 6) + 1; // Число от 1 до 6
+            document.getElementById('diceResult').textContent = 'Результат: ' + result;
+        }
+
+        // Инициализация игрового поля
+        createGameBoard();
+
+        // Обработчик для кнопки броска кубика
+        document.getElementById('rollButton').addEventListener('click', rollDice);
+    </script>
+
+</body>
+</html>
